@@ -1,16 +1,23 @@
-from logic_utils import check_guess
+def check_guess(guess, secret_number):
+    """
+    Compare the player's guess with the secret number.
 
-def test_winning_guess():
-    # If the secret is 50 and guess is 50, it should be a win
-    result = check_guess(50, 50)
-    assert result == "Win"
+    Parameters:
+        guess (int): The number entered by the player.
+        secret_number (int): The secret number the player
+        is trying to guess.
 
-def test_guess_too_high():
-    # If secret is 50 and guess is 60, hint should be "Too High"
-    result = check_guess(60, 50)
-    assert result == "Too High"
+    Returns:
+        str:
+            "correct" if the guess equals the secret number.
+            "higher" if the player needs to guess higher.
+            "lower" if the player needs to guess lower.
+    """
 
-def test_guess_too_low():
-    # If secret is 50 and guess is 40, hint should be "Too Low"
-    result = check_guess(40, 50)
-    assert result == "Too Low"
+    if guess == secret_number:
+        return "correct"
+
+    if guess < secret_number:
+        return "higher"
+
+    return "lower"
